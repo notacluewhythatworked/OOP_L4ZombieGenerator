@@ -1,4 +1,5 @@
 package models;
 
-public class Runner extends Zombie{
+public class Runner extends Zombie {
+    private int climbSpeed;
 }

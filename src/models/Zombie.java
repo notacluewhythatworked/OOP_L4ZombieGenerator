@@ -1,13 +1,16 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Zombie {
 
     protected int baseHP;
     protected int speed;
+    protected int attack;
     private int arms;
     private int legs;
+    private ArrayList<Zombie> zombie = new ArrayList<>();
 
     //getters
     public int getBaseHP() {
@@ -15,6 +18,9 @@ public abstract class Zombie {
     }
     public int getSpeed() {
         return speed;
+    }
+    public int getAttack() {
+        return attack;
     }
 
     //setters
@@ -24,6 +30,10 @@ public abstract class Zombie {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
 
     private void roll(){
 
@@ -32,6 +42,7 @@ public abstract class Zombie {
     private void attack(){
 
     }
+
 
     private int getRandNum(int min, int max){
         Random rng = new Random();
