@@ -1,4 +1,4 @@
 package models;
 
-public class Runner {
+public class Runner extends Zombie{
 }

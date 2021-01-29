@@ -1,4 +1,4 @@
 package models;
 
-public class Tank {
+public class Tank extends Zombie{
 }

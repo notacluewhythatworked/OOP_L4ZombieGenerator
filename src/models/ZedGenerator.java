@@ -6,6 +6,10 @@ import java.io.InputStreamReader;
 
 public class ZedGenerator {
 
+    public void run(){
+
+    }
+
     private void menu(){
         System.out.println("Let's choose an option, shall we?");
         String userSelection = null;
@@ -33,6 +37,7 @@ public class ZedGenerator {
             case "3":
                 break;
             case "4":
+                System.out.println("Goodbye!");
                 break;
         }
     }

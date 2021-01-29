@@ -1,4 +1,4 @@
 package models;
 
-public class Walker {
+public class Walker extends Zombie{
 }
