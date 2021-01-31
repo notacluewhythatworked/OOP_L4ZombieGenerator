@@ -35,22 +35,22 @@ public abstract class Zombie {
     }
 
 
-    private void roll(){
-
+    public static int roll(int min, int max){
+        Random roll = new Random();
+        int dieRoll = roll.nextInt(max - min + 1) + min;
+        return dieRoll;
     }
 
-    private void attack(){
+    public abstract void attack(String zombie, int rollMin, int rollMax, int attackMin, int attackMax, int baseHPMin, int baseHPMax, int speedMin, int speedMax);
 
+    @Override
+    public String toString() {
+        return "Zombie{" +
+                "baseHP=" + baseHP +
+                ", speed=" + speed +
+                ", attack=" + attack +
+                ", arms=" + arms +
+                ", legs=" + legs +
+                '}';
     }
-
-
-    private int getRandNum(int min, int max){
-        Random rng = new Random();
-
-        int randIndex = rng.nextInt(max - min + 1) + min;
-
-        return randIndex;
-    }
-
-
 }
