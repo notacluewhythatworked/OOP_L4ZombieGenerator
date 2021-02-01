@@ -8,9 +8,13 @@ public class Tank extends Zombie {
         int rollCount = 3;
         int rollCount2 = 3;
         int damage = 0;
+        int damageModifier;
+        String attackMessage = "\nYou're being attacked by a " + zombie + "! They have " + arms + " arm(s) and " + legs + " leg(s). Let's roll and see how much damage you'll take.";
 
         baseHP = roll(baseHPMin, baseHPMax);
         speed = roll(speedMin, speedMax);
+        arms = roll(0,2);
+        legs = roll(0,2);
 
         //sets attack variable equal to the roll to hold on to while we perform some math
         attack = roll(rollMin, rollMax);
@@ -20,7 +24,7 @@ public class Tank extends Zombie {
             System.out.println("\nThe " + zombie + " attack missed! You received no damage.");
         } else if (attack > attackMin && attack < attackMax) {
             //The player took some damage, now we're rolling to find out how much, using an do/while to make sure we roll 3 times
-            System.out.println("\nYou're being attacked by a " + zombie + "! Let's roll and see how much damage you'll take.");
+            System.out.println(attackMessage);
             do {
                 damage += roll(1, 6); //x3
                 rollCount--;
@@ -30,7 +34,7 @@ public class Tank extends Zombie {
             System.out.println("Ouch! You took " + damage + " damage.");
         } else {
             //If the players d20 rolled a 20, then we need to roll some 3d6 and double the result for double damage.
-            System.out.println("\nYou're being attacked by a " + zombie + "! Let's roll and see how much damage you'll take.");
+            System.out.println(attackMessage);
             do {
                 damage += roll(1, 6); //x3
                 rollCount2--;

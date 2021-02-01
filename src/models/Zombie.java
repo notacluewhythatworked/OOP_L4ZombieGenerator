@@ -8,9 +8,8 @@ public abstract class Zombie {
     protected int baseHP;
     protected int speed;
     protected int attack;
-    private int arms;
-    private int legs;
-    private ArrayList<Zombie> zombie = new ArrayList<>();
+    protected int arms;
+    protected int legs;
 
     //getters
     public int getBaseHP() {
