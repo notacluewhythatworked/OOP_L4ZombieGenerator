@@ -120,7 +120,7 @@ public class ZedGenerator {
         return userNum;
     }
 
-    private void userGeneratedZombies(){
+    private void userGeneratedZombies() throws IOException {
         String userSelection;
         boolean isInvalid = true;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -129,19 +129,18 @@ public class ZedGenerator {
             //TODO: userSelection is returning null constantly and that is not okay. It needs to wait for user input before proceeding.
             try {
                 userSelection = br.readLine();
-                Integer.parseInt(userSelection);
-                isInvalid = userSelection == null || userSelection.isBlank();
+                isInvalid = userSelection.isBlank();
                 zombieTypes(1, 3, Integer.parseInt(userSelection));
+                menu();
 
                 if (isInvalid) {
                     System.out.println("Oof. You gave us nothing and that's just sad. Let's try that again.");
                 }
+            } catch (NumberFormatException nfe) {
+                System.out.print("You dummy. Stop doing that. Just enter a number plz");
             } catch (IOException ioe) {
-                System.out.println("Wow, you numskull. Take a look around you. Now don't come here again.");
+                System.out.print("Wow, you numskull. Take a look around you. Now don't come here again.");
             }
-        } while (isInvalid);
-
-
-
+        } while (!isInvalid);
     }
 }

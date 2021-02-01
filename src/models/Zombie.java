@@ -8,8 +8,8 @@ public abstract class Zombie {
     protected int baseHP;
     protected int speed;
     protected int attack;
-    protected int arms;
-    protected int legs;
+    protected int arms = roll(0,2);
+    protected int legs = roll(0,2);
 
     //getters
     public int getBaseHP() {

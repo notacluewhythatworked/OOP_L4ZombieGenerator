@@ -17,8 +17,6 @@ public class Runner extends Zombie {
 
         baseHP = roll(baseHPMin, baseHPMax);
         speed = roll(speedMin, speedMax);
-        arms = roll(0,2);
-        legs = roll(0,2);
 
         //sets attack variable equal to the roll to hold on to while we perform some math
         attack = roll(rollMin, rollMax);
