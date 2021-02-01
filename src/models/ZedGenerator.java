@@ -35,15 +35,21 @@ public class ZedGenerator {
         switch (userSelection) {
             case "1":
                 zombieTypes(1, 3, 1);
+                addToDatabase();
+                System.out.println("Here's what was created: " + horde);
                 menu();
                 break;
             case "2":
                 int roll = Zombie.roll(1, 10);
                 zombieTypes(1, 3, roll);
+                addToDatabase();
+                System.out.println("Here's what was created: " + horde);
                 menu();
                 break;
             case "3":
                 userGeneratedZombies();
+                addToDatabase();
+                System.out.println("Here's what was created: " + horde);
                 menu();
                 break;
             case "4":
@@ -131,7 +137,6 @@ public class ZedGenerator {
                 userSelection = br.readLine();
                 isInvalid = userSelection.isBlank();
                 zombieTypes(1, 3, Integer.parseInt(userSelection));
-                menu();
 
                 if (isInvalid) {
                     System.out.println("Oof. You gave us nothing and that's just sad. Let's try that again.");
@@ -141,6 +146,16 @@ public class ZedGenerator {
             } catch (IOException ioe) {
                 System.out.print("Wow, you numskull. Take a look around you. Now don't come here again.");
             }
-        } while (!isInvalid);
+        } while (isInvalid);
+    }
+
+    private void addToDatabase(){
+        horde.removeAll(horde);
+        horde.add(new Zombie() {
+            @Override
+            public void attack(String zombie, int rollMin, int rollMax, int attackMin, int attackMax, int baseHPMin, int baseHPMax, int speedMin, int speedMax) {
+
+            }
+        });
     }
 }

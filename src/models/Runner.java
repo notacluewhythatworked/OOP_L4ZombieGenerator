@@ -1,25 +1,22 @@
 package models;
 
 public class Runner extends Zombie {
-    private int climbSpeed;
-
-    public void test(){
-        climbSpeed = speed / 3;
-        Math.round(climbSpeed);
-        System.out.println(climbSpeed);
-    }
+    private int climbSpeed = speed / 3;
+    private int damage = 0;
 
     public void attack(String zombie, int rollMin, int rollMax, int attackMin, int attackMax, int baseHPMin, int baseHPMax, int speedMin, int speedMax) {
         int rollCount = 2;
         int rollCount2 = 2;
-        int damage = 0;
         String attackMessage = "\nYou're being attacked by a " + zombie + "! They have " + arms + " arm(s) and " + legs + " leg(s). Let's roll and see how much damage you'll take.";
+        setName(zombie);
+        setArms(arms);
+        setLegs(legs);
 
-        baseHP = roll(baseHPMin, baseHPMax);
-        speed = roll(speedMin, speedMax);
+        setBaseHP(roll(baseHPMin, baseHPMax));
+        setSpeed(roll(speedMin, speedMax));
 
         //sets attack variable equal to the roll to hold on to while we perform some math
-        attack = roll(rollMin, rollMax);
+        setAttack(roll(rollMin, rollMax));
 
         //IF statement whether the attack missed or hit
         if (attack < attackMin) {
@@ -39,16 +36,26 @@ public class Runner extends Zombie {
                 damage += roll(1, 8); //x2
                 rollCount2--;
             } while (attack > attackMax && rollCount2 > 0);
-            System.out.println("\nOof. That one was a doosy and you suffered double damage! You took " + damage * 2 + " damage.");
-
+            System.out.println("Oof. That one was a doosy and you suffered double damage! You took " + damage * 2 + " damage.");
         }
-        System.out.println(toString());
+    }
+
+
+    //default constructor
+    public Runner() {
+
+    }
+
+    //custom constructor
+    public Runner(int climbSpeed, int damage) {
+        this.climbSpeed = climbSpeed;
+        this.damage = damage;
     }
 
     @Override
     public String toString() {
         return super.toString() +
-                "Runner{climbSpeed=" + climbSpeed +
-                "}";
+                "\nClimb Speed: " + climbSpeed +
+                "\nDamage received: " + damage;
     }
 }

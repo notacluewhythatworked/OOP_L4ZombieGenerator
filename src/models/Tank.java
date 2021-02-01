@@ -2,20 +2,21 @@ package models;
 
 public class Tank extends Zombie {
     private int damageModifier;
-
+    private int damage = 0;
 
     public void attack(String zombie, int rollMin, int rollMax, int attackMin, int attackMax, int baseHPMin, int baseHPMax, int speedMin, int speedMax) {
         int rollCount = 3;
         int rollCount2 = 3;
-        int damage = 0;
-        int damageModifier;
         String attackMessage = "\nYou're being attacked by a " + zombie + "! They have " + arms + " arm(s) and " + legs + " leg(s). Let's roll and see how much damage you'll take.";
+        setName(zombie);
+        setArms(arms);
+        setLegs(legs);
 
-        baseHP = roll(baseHPMin, baseHPMax);
-        speed = roll(speedMin, speedMax);
+        setBaseHP(roll(baseHPMin, baseHPMax));
+        setSpeed(roll(speedMin, speedMax));
 
         //sets attack variable equal to the roll to hold on to while we perform some math
-        attack = roll(rollMin, rollMax);
+        setAttack(roll(rollMin, rollMax));
 
         //IF statement whether the attack missed or hit
         if (attack < attackMin) {
@@ -39,15 +40,24 @@ public class Tank extends Zombie {
             } while (attack == 20 && rollCount2 > 0);
             damageModifier = roll(10,20);
             damage += damageModifier;
-            System.out.println("\nYikes! That one hurt! That triple damage really did a number on you. You took " + damage * 3 + " damage.");
-
+            System.out.println("Yikes! That one hurt! That triple damage really did a number on you. You took " + damage * 3 + " damage.");
         }
-        System.out.println(toString());
+    }
+
+    //default constructor
+    public Tank() {
+    }
+
+    //custom constructor
+    public Tank(int damageModifier, int damage) {
+        this.damageModifier = damageModifier;
+        this.damage = damage;
     }
 
     @Override
     public String toString() {
         return super.toString() +
-                "Tank{damageModifier=" + damageModifier + "}";
+                "\nDamage Modifier (ooo, triple damage): " + damageModifier +
+                "\nDamage received: " + damage;
     }
 }
